@@ -140,13 +140,13 @@ penguin_data[1:2, c('age','ALEX1','ALEX2')]
 ![dataframe](picture/chp5/dataframe.png)
 
 ```{r 5.4 exercise}
-# gender <- c(***)
+gender <- c('男', '女', '女', '男')
 # gender1 <- ***
-# score <- c(***)
-# letter <- c(***)
-# logic <- c(***)
-# data <- ***(***)
-
+score <- c(97, 99, 95, 96)
+letter <- c('A', 'A', 'B', 'B')
+logic <- c(T, F, T, F)
+data <- data.frame(gender, score, letter, logic)
+data
 #将“***”部分替换为适合的代码，并删去行首的“#”,即可运行
 ```
 
@@ -218,7 +218,7 @@ penguin_data[1:2, c('age','ALEX1','ALEX2')]
 -   <font size = 5> 用colnames()函数查看数据集的列名的特点 </font>
 
 ```{r 5 colnames}
-# colnames(penguin_data)
+colnames(penguin_data)
 
 # 删去行首的“#”，运行改行代码
 ```
@@ -229,9 +229,9 @@ penguin_data[1:2, c('age','ALEX1','ALEX2')]
 -   <font size = 5> 用数字索引或名称索引选取“Site”、 “stress1” 到 “stress14”等列的变量，赋值给新变量“stress_data” </font>
 
 ```{r 5.2.1 select by name or index}
-# stress_data <- penguin_data[***,***]
-# stress_data <- penguin_data[ ,c(‘***’)]
-
+stress_data <- penguin_data[66:79]
+stress_data <- penguin_data[c(1, 66:79)]
+stress_data
 #将“***”部分替换为适合的代码，并删去行首的“#”,即可运行
 ```
 
@@ -278,14 +278,16 @@ base::endsWith(c('abc','cd','c'),'c')
 # <font size = 5> 使用字符的部分匹配将以"stress"开头的列选择出来 </font>
 
 ```{r 5.2.1 select by string}
-# stress_data <- penguin_data[***,***]
+stress_data <- penguin_data[66:79]
 selected_cols <- c('Site', colnames(penguin_data)[base::startsWith(colnames(penguin_data),'stress')])
+selected_cols
 
 stress_data <- penguin_data[ , selected_cols]
 
 # alternative, 注意，grep返回的是列的序号
 stress_data <- penguin_data[ , c(1, grep("^stress", names(penguin_data)))]
 
+stress_data
 #将“***”部分替换为适合的代码，并删去行首的“#”,即可运行
 ```
 
@@ -317,6 +319,7 @@ c(1:5) * c(6:10)
 
 ```{r 5.5 row sum}
 stress_data_thu$stress_sum <- rowSums(stress_data_thu[,grep("^stress", names(stress_data_thu))])
+stress_data_thu
 ```
 
 
